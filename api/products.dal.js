@@ -1,22 +1,25 @@
-import fs from 'fs';
-import { promisify } from 'util';
-import morgan from 'morgan';
-import products from '../data.json' assert {type: 'json'}
+// import products from '../data.json' assert {type: 'json'}
+import jsonfile from 'jsonfile'
 
 
-const getProducts = async (req, res) => {
-    const resp = await products
-    return resp
+let data = []
+
+jsonfile.readFile('./data.json', (err, arr) => {
+    if(err) console.log(err)
+    data = arr
+})
+
+const getProducts = (req, res) => {
+    return data
 };
 
-const getProductsById = async (id) => {
-const resp = await products
-const productId = resp.find(user => id === String(user.id));
+const getProductsById = (id) => {
+const productId = data.find(productId => id === String(productId.id));
 return productId;
 
 };
 
-const addProducts = async (id, title, price, description, category, image, rating, quantity) => {
+const addProducts = (id, title, price, description, category, image, rating, quantity) => {
     const product = {
         id,
         title,
@@ -27,9 +30,8 @@ const addProducts = async (id, title, price, description, category, image, ratin
         rating,
         quantity
     }
-    const resp = await products
-    resp.push(product)
-    return resp
+    data.push(product)
+    return data
 };
 
 
