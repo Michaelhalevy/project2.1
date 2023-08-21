@@ -1,19 +1,19 @@
 import productsDal from './products.dal.js';
 
-const getUsers = async () => {
+const getProducts = async () => {
     try {
-        const users = await productsDal.getUsers();
-        return users;
+        const products = await productsDal.getProducts();
+        return products;
     } catch (err) {
         console.error('Error reading data:', err);
         throw err;
     }
 };
 
-const getUserById = async (id) => {
+const getProductsById = async (id) => {
     try {
-        const user = await productsDal.getUserById(id);
-        return user;
+        const productId = await productsDal.getProductsById(id);
+        return productId;
     } catch (err) {
         console.error('Error reading data:', err);
         throw err;
@@ -33,8 +33,8 @@ const addProducts = async (id, title, price, description, category, image, ratin
 
 
 const productsService = {
-    getUsers,
-    getUserById,
+    getProducts,
+    getProductsById,
     addProducts
 
 };

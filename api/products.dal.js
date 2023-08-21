@@ -4,15 +4,15 @@ import morgan from 'morgan';
 import products from '../data.json' assert {type: 'json'}
 
 
-const getUsers = async (req, res) => {
+const getProducts = async (req, res) => {
     const resp = await products
     return resp
 };
 
-const getUserById = async (id) => {
+const getProductsById = async (id) => {
 const resp = await products
-const user = resp.find(user => id === String(user.id));
-return user;
+const productId = resp.find(user => id === String(user.id));
+return productId;
 
 };
 
@@ -33,10 +33,10 @@ const addProducts = async (id, title, price, description, category, image, ratin
 };
 
 
-const userDal = {
-    getUsers,
-    getUserById,
+const productDal = {
+    getProducts,
+    getProductsById,
     addProducts
 };
 
-export default userDal;
+export default productDal;
