@@ -1,12 +1,12 @@
 import express from 'express';
-import productsRouter from './api/products.router.js';
+import productsRouter from './api/products/products.router.js';
 
 const port = 3000;
 const app = express();
 
 app.use(express.json());
 
-app.use('/api', productsRouter)
+app.use('/api/products', productsRouter)
 
 
 
