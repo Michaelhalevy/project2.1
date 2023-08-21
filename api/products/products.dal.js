@@ -4,7 +4,7 @@ import jsonfile from 'jsonfile'
 
 let data = []
 
-jsonfile.readFile('./data.json', (err, arr) => {
+jsonfile.readFile('./data.products.json', (err, arr) => {
     if(err) console.log(err)
     data = arr
 })
@@ -34,11 +34,30 @@ const addProducts = (id, title, price, description, category, image, rating, qua
     return data
 };
 
+const updateProduct = (id, title, price, description, category, image, rating, quantity) =>{
+    console.log('')
+    const productId = data.findIndex(product => product.id == id);
+    data[productId] = {
+        id,
+        title,
+        price,
+        description,
+        category,
+        image,
+        rating,
+        quantity
+    }
+    return data
+
+}
 
 const productDal = {
     getProducts,
     getProductsById,
-    addProducts
+    addProducts,
+    updateProduct
 };
+
+
 
 export default productDal;

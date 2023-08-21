@@ -23,7 +23,19 @@ const getProductsById = async (id) => {
 const addProducts = async (id, title, price, description, category, image, rating, quantity) => {
     try {
         const products = await productsDal.addProducts(id, title, price, description, category, image, rating, quantity);
+        console.log('service')
+        
         return products;
+    } catch (err) {
+        console.error('Error reading data:', err);
+        throw err;
+    }
+};
+
+const updateProduct = async (id, title, price, description, category, image, rating, quantity) => {
+    try {
+        const upProducts = await productsDal.updateProduct(id, title, price, description, category, image, rating, quantity);
+        return upProducts;
     } catch (err) {
         console.error('Error reading data:', err);
         throw err;
@@ -32,10 +44,12 @@ const addProducts = async (id, title, price, description, category, image, ratin
 
 
 
+
 const productsService = {
     getProducts,
     getProductsById,
-    addProducts
+    addProducts,
+    updateProduct
 
 };
 

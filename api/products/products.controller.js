@@ -42,10 +42,28 @@ const addProducts = async (req, res) => {
     } catch (error) {
         console.error(error)
     }}
+
+    const updateProduct = async (req, res) => {
+        try {
+            const {title, price, description, category, image, rating, quantity} = req.body
+            const {id} = req.params
+            console.log('controller')
+            const product = await productsService.updateProduct(id, title, price, description, category, image, rating, quantity);
+            if (product) {
+                return res.status(200).json(product)
+            } else {
+                return res.status(404).json({ "message": "user not found" })
+    
+            }
+        } catch (error) {
+            console.error(error)
+        }}
+        
 const productsControler = {
     getAllProducts,
     getProductsById,
-    addProducts
+    addProducts,
+    updateProduct
 
 };
 

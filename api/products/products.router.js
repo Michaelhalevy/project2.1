@@ -12,7 +12,7 @@ router.get('/:id', productsControler.getProductsById)
 router.post('/', productsControler.addProducts)
 
 
-//router.put('/', productsControler.addUser)
+router.put('/:id', productsControler.updateProduct)
 
 
 //router.delete('/', productsControler.addUser)
