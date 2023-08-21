@@ -51,11 +51,20 @@ const updateProduct = (id, title, price, description, category, image, rating, q
 
 }
 
+const deleteProduct = (id) =>{
+    const productId = data.findIndex(product => product.id == id);
+    data.splice(productId, 1)
+    return data
+
+}
+
+
 const productDal = {
     getProducts,
     getProductsById,
     addProducts,
-    updateProduct
+    updateProduct,
+    deleteProduct
 };
 
 

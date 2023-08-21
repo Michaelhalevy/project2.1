@@ -42,6 +42,15 @@ const updateProduct = async (id, title, price, description, category, image, rat
     }
 };
 
+const deleteProduct = async (id) => {
+    try {
+        const upProducts = await productsDal.deleteProduct(id);
+        return upProducts;
+    } catch (err) {
+        console.error('Error reading data:', err);
+        throw err;
+    }
+};
 
 
 
@@ -49,7 +58,8 @@ const productsService = {
     getProducts,
     getProductsById,
     addProducts,
-    updateProduct
+    updateProduct,
+    deleteProduct
 
 };
 

@@ -57,13 +57,31 @@ const addProducts = async (req, res) => {
             }
         } catch (error) {
             console.error(error)
-        }}
+}};
+
+const deleteProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const productID = await productsService.deleteProduct(id);
+        if (productID) {
+            return res.status(200).json(productID)
+        } else {
+            return res.status(404).json({ "message": "user not found" })
+
+        }
+    } catch (error) {
+        console.error(error)
+    }
+};
+
+
         
 const productsControler = {
     getAllProducts,
     getProductsById,
     addProducts,
-    updateProduct
+    updateProduct,
+    deleteProduct
 
 };
 

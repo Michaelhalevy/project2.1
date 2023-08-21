@@ -15,6 +15,7 @@ router.post('/', productsControler.addProducts)
 router.put('/:id', productsControler.updateProduct)
 
 
-//router.delete('/', productsControler.addUser)
+router.delete('/:id', productsControler.deleteProduct)
+
 
 export default router;
