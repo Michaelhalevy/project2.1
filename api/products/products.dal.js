@@ -58,13 +58,28 @@ const deleteProduct = (id) =>{
 
 }
 
+const updateQuantity = (id, quantity) =>{
+    const productId = data.find(product => product.id == id);
+    const {sold} = quantity
+    const {add} = quantity
+
+    if(sold){
+        productId.quantity -= sold
+    }else if(add){
+        productId.quantity += add
+    }
+
+    return data
+}
+
 
 const productDal = {
     getProducts,
     getProductsById,
     addProducts,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    updateQuantity
 };
 
 

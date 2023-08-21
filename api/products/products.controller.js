@@ -74,6 +74,22 @@ const deleteProduct = async (req, res) => {
     }
 };
 
+const updateQuantity = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const quantity = req.body;
+        const productID = await productsService.updateQuantity(id,quantity);
+        if (productID) {
+            return res.status(200).json(productID)
+        } else {
+            return res.status(404).json({ "message": "user not found" })
+
+        }
+    } catch (error) {
+        console.error(error)
+    }
+};
+
 
         
 const productsControler = {
@@ -81,7 +97,8 @@ const productsControler = {
     getProductsById,
     addProducts,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    updateQuantity
 
 };
 

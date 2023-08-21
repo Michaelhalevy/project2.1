@@ -52,6 +52,16 @@ const deleteProduct = async (id) => {
     }
 };
 
+const updateQuantity = async (id, quantity) => {
+    try {
+        const upProducts = await productsDal.updateQuantity(id,quantity);
+        return upProducts;
+    } catch (err) {
+        console.error('Error reading data:', err);
+        throw err;
+    }
+};
+
 
 
 const productsService = {
@@ -59,7 +69,8 @@ const productsService = {
     getProductsById,
     addProducts,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    updateQuantity
 
 };
 
